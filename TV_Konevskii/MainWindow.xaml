@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TV_Konevskii"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+          Title="Телевизор" Height="450" Width="800" MinHeight="450" MinWidth="800" FontFamily="Arial Narrow">
+    <Grid Background="#FF383838">
+        <Label
+            x:Name="NameChannel"
+            Content="Название канала" 
+            HorizontalAlignment="Left"
+            Margin="20,10,0,0"
+            VerticalAlignment="Top"
+            Foreground="White"/>
+        <MediaElement
+            x:Name="VideoPlayer"
+            LoadedBehavior="Manual"
+            Volume="1"
+            Stretch="UniformToFill"
+            Margin="20,41,19.6,50"/>
+        <Grid
+            Margin="0,0,0,0"
+            Height="50"
+            VerticalAlignment="Bottom">
+            <Button
+                Click="BackChannel"
+                Content="Назад"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Height="25"
+                Margin="10,0,0,10"
+                Background="White"/>
+            <Button
+                Click="NextChannel"
+                Content="Bперед"
+                HorizontalAlignment="Left"
+                Margin="115,0,0,10"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Height="25"
+                Background="White"/>
+            <Button
+                Click="DownVolume"
+                Content="Тише"
+                HorizontalAlignment="Right"
+                Margin="0,0,115,10"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Height="25"
+                Background="White"/>
+            <Button
+                Click="VolumeUp"
+                Content="Громче"
+                HorizontalAlignment="Right"
+                Margin="0,0,10,10"
+                VerticalAlignment="Bottom"
+                Width="100"
+                Height="25"
+                Background="White"/>
+            <ProgressBar x:Name="ProgressVol" HorizontalAlignment="Left" Height="14" Margin="379,20,0,0" VerticalAlignment="Top" Width="174"/>
+            <TextBox KeyDown="InputChannel" x:Name="ChannelInput" HorizontalAlignment="Left" Margin="220,15,0,0" TextWrapping="Wrap" Text="Введите канал" VerticalAlignment="Top" Width="107" Height="25"/>
+        </Grid>
     </Grid>
 </Window>
