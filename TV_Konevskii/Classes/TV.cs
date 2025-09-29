@@ -10,8 +10,9 @@ namespace TV_Konevskii.Classes
 {
     internal class TV
     {
-        private int activeChannel;
-        private int activeVolume;
+        public int activeChannel;
+        public int activeVolume = 50;
+
         public int ActiveChannel { 
             get { 
                 return activeChannel; 
@@ -30,18 +31,18 @@ namespace TV_Konevskii.Classes
         {
             Channels.Add(new Channel()
             {
-                Name = "Прпрпр",
-                Src = @"Путь"
+                Name = "Мопс лижет экран",
+                Src = @"C:\Users\student-a502\Downloads\video_ee0379adf30d480d883fdc6b60767a73_480_20250929120925.mp4"
             });
             Channels.Add(new Channel()
             {
-                Name = "Прпрпр",
-                Src = @"Путь"
+                Name = "\"Жизнь на пенсии\".. Один день из жизни пенсионерки.",
+                Src = @"C:\Users\student-a502\Downloads\video_9a46b7daafee1048c92268ccdab1e0c9_480_20250929121631.mp4"
             });
             Channels.Add(new Channel()
             {
-                Name = "Прпрпр",
-                Src = @"Путь"
+                Name = "Моем ,солим грузди ,топим баню.",
+                Src = @"C:\Users\student-a502\Downloads\video_3675683d18879aa3b0e44dc8a5574193_480_20250929122008.mp4"
             });
         }
         public void SwapChannel(MediaElement _MediaElement, Label _NameChannel)
@@ -52,7 +53,7 @@ namespace TV_Konevskii.Classes
             StartAnimation.Duration = TimeSpan.FromSeconds(0.6);
             StartAnimation.Completed += delegate
             {
-                _MediaElement.Source = new Uri(this.Channels[this.activeChannel].Src);
+                _MediaElement.Source = new Uri(this.Channels[this.activeChannel].Src, UriKind.RelativeOrAbsolute);
                 _MediaElement.Play();
                 DoubleAnimation EndAnimation = new DoubleAnimation();
                 EndAnimation.From = 0;
@@ -74,13 +75,15 @@ namespace TV_Konevskii.Classes
             ActiveChannel--;
             SwapChannel(_MediaElement, _NameChannel);
         }
-        public void UpSound()
+        public void UpSound(MediaElement _MediaElement)
         {
-
+            activeVolume++;
+            _MediaElement.Volume += activeVolume;
         }
-        public void DownSound() 
+        public void DownSound(MediaElement _MediaElement) 
         {
-
+            activeVolume--;
+            _MediaElement.Volume -= activeVolume;
         }
     }
 }
